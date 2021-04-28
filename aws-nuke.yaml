@@ -12,21 +12,20 @@ accounts:
   261219435789:
     resource-types:
       excludes:
-        - AppStreamImage
-        - DynamoDBTable
-        - DynamoDBTableItem
+        - CloudWatchEventsRule
+          - codebuild-nuke-cron
+        - CloudWatchEventsTarget
+          - codebuild-nuke-cron
+        - CodeBuildProject
+          - sandbox-nuke
         - IAMSAMLProvider
-        - IAMUser
-        - IAMRole
-        - IAMRolePolicy
-        - IAMPolicy
         - IAMRolePolicyAttachment
           - "AWSServiceRole*"
           - "AWSReservedSSO_SandboxAdmin*"
           - "codebuild-aws-nuke"
         - S3Object
         - S3Bucket
-        - LambdaFunction
+          - aws-nuke-config-madetech
         - CloudFormationStack
           - "hackney-mosaic-dev"
           - "awseb-e-fpdbchrgp4-stack"
@@ -34,10 +33,6 @@ accounts:
           - "CJSEMQToSQS"
           - "meal-planner-api-dev"
           - "ddb-scheduler-dev"
-          - "amplify-amplify87cc553824e54-staging-165244"
-          - "amplify-amplify87cc553824e54-staging-165244-authg1betatest-K45LG5X5LIH8"
-          - "amplify-g1betatest-main-114237"
-          - "amplify-login-custom-message-b1b266b9"
           - "amplify*"
         - CloudWatchLogsLogGroup
         - ECRRepository
