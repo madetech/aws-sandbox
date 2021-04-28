@@ -1,0 +1,45 @@
+---
+regions:
+- "global"
+- "eu-west-1"
+- "eu-west-2"
+- "us-east-1"
+
+account-blocklist:
+- 1234567890
+
+accounts:
+  261219435789:
+    resource-types:
+      excludes:
+        - AppStreamImage
+        - DynamoDBTable
+        - DynamoDBTableItem
+        - IAMSAMLProvider
+        - IAMUser
+        - IAMRole
+        - IAMRolePolicy
+        - IAMPolicy
+        - IAMRolePolicyAttachment
+          - "AWSServiceRole*"
+          - "AWSReservedSSO_SandboxAdmin*"
+          - "codebuild-aws-nuke"
+        - S3Object
+        - S3Bucket
+        - LambdaFunction
+        - CloudFormationStack
+          - "hackney-mosaic-dev"
+          - "awseb-e-fpdbchrgp4-stack"
+          - "sdd-filtering-demo-dev"
+          - "CJSEMQToSQS"
+          - "meal-planner-api-dev"
+          - "ddb-scheduler-dev"
+          - "amplify-amplify87cc553824e54-staging-165244"
+          - "amplify-amplify87cc553824e54-staging-165244-authg1betatest-K45LG5X5LIH8"
+          - "amplify-g1betatest-main-114237"
+          - "amplify-login-custom-message-b1b266b9"
+          - "amplify*"
+        - CloudWatchLogsLogGroup
+        - ECRRepository
+        - ECSTaskDefinition
+        - OpsWorksUserProfile
