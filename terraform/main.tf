@@ -19,8 +19,8 @@ resource "aws_s3_bucket" "this" {
 
 data "archive_file" "zip" {
   type        = "zip"
-  source_file = "./aws-nuke.yaml"
-  output_path = "./aws-nuke.zip"
+  source_file = "../aws-nuke.yaml"
+  output_path = "../aws-nuke.zip"
 }
 
 resource "aws_s3_bucket_object" "upload_zip" {
