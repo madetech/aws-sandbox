@@ -1,26 +1,3 @@
-terraform {
-  required_version = ">= 0.13.0"
-
-  backend "s3" {
-    bucket         = "madetech-sandbox-terraform-state"
-    key            = "bootstrap.tfstate"
-    region         = "eu-west-2"
-    dynamodb_table = "sandbox-terraform-locks"
-    encrypt        = true
-  }
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "eu-west-2"
-}
-
 resource "aws_kms_key" "this" {
   description             = "sandbox-terraform-remote-state-key"
   deletion_window_in_days = 10
