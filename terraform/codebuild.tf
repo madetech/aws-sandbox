@@ -26,7 +26,6 @@ resource "aws_codebuild_project" "aws_nuke" {
   }
 }
 
-### Codebuild IAM
 resource "aws_iam_role" "codebuild" {
   name               = "codebuild-aws-nuke"
   assume_role_policy = data.aws_iam_policy_document.codebuild.json

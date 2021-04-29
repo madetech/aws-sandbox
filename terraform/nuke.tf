@@ -1,4 +1,5 @@
 ### Use S3 bucket as source, zip up yaml
+### Temp until setup connection to github properly
 
 resource "aws_s3_bucket" "this" {
   bucket = "aws-nuke-config-madetech"
