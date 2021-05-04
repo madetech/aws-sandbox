@@ -13,18 +13,20 @@ accounts:
     resource-types:
       excludes:
         - CloudFormationStack
-          - "hackney-mosaic-dev"
-          - "awseb-e-fpdbchrgp4-stack"
-          - "sdd-filtering-demo-dev"
-          - "CJSEMQToSQS"
-          - "meal-planner-api-dev"
-          - "ddb-scheduler-dev"
+          - hackney-mosaic-dev
+          - awseb-e-fpdbchrgp4-stack
+          - sdd-filtering-demo-dev
+          - CJSEMQToSQS
+          - meal-planner-api-dev
+          - ddb-scheduler-dev
           - "amplify*"
         - CloudWatchEventsRule
           - codebuild-nuke-cron
         - CloudWatchEventsTarget
           - codebuild-nuke-cron
         - CodeBuildProject
+          - sandbox-nuke
+        - CodeStarConnection
           - sandbox-nuke
         - DynamoDBTable
           - sandbox-terraform-locks 
@@ -35,7 +37,8 @@ accounts:
         - IAMRolePolicyAttachment
           - "AWSServiceRole*"
           - "AWSReservedSSO_SandboxAdmin*"
-          - "codebuild-aws-nuke"
+          - codebuild-aws-nuke
+        - OpsWorksUserProfile
         - S3Object
         - S3Bucket
           - madetech-sandbox-terraform-state
