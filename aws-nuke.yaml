@@ -17,7 +17,6 @@ account-blocklist:
 resource-types:
   excludes:
     - EC2KeyPair
-    - IAMUser
     - IAMSAMLProvider
     - OpsWorksUserProfile
     - S3Object
@@ -32,7 +31,6 @@ accounts:
         - "CJSEMQToSQS"
         - "meal-planner-api-dev"
         - "ddb-scheduler-dev"
-        - "amplify*"
       CloudWatchEventsRule:
         - "Rule: codebuild-nuke-cron"
       CloudWatchEventsTarget:
@@ -49,13 +47,13 @@ accounts:
         - "sandbox-terraform-locks -> madetech-sandbox-terraform-state/sandbox.tfstate-md5"
         - "sandbox-terraform-locks -> madetech-sandbox-terraform-state/bootstrap.tfstate-md5"
       IAMRole:
-        - "AWSReservedSSO*"
+        - "AWSReservedSSO_SandboxAdmin_772511f048f85463"
         - "codebuild-aws-nuke"
       IAMRolePolicy:
         - "cloudwatch_events_assume -> cloudwatch_events_start_codebuild"
       IAMRolePolicyAttachment:
         - "AWSServiceRole*"
-        - "AWSReservedSSO_SandboxAdmin*"
+        - "AWSReservedSSO_SandboxAdmin_772511f048f85463 -> AdministratorAccess"
         - "codebuild-aws-nuke -> AdministratorAccess"
       S3Bucket:
         - "s3://madetech-sandbox-terraform-state"
