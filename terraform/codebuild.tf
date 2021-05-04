@@ -4,10 +4,11 @@ resource "aws_codestarconnections_connection" "aws_nuke" {
 }
 
 resource "aws_codebuild_project" "aws_nuke" {
-  name          = "sandbox-nuke"
-  description   = "Nuke Sandbox Weekly"
-  build_timeout = "5"
-  service_role  = aws_iam_role.codebuild.arn
+  name           = "sandbox-nuke"
+  description    = "Nuke Sandbox Weekly"
+  build_timeout  = "5"
+  service_role   = aws_iam_role.codebuild.arn
+  source_version = "main"
 
   artifacts {
     type = "NO_ARTIFACTS"
@@ -21,9 +22,13 @@ resource "aws_codebuild_project" "aws_nuke" {
   }
 
   source {
-    type      = "S3"
-    location  = "arn:aws:s3:::aws-nuke-config-madetech/aws-nuke.zip"
-    buildspec = "version: 0.2\n\nphases:\n  build:\n    commands:\n       - aws-nuke --config aws-nuke.yaml --quiet --force"
+    git_clone_depth = 1
+    type            = "GITHUB"
+    location        = "https://github.com/madetech/aws-sandbox.git"
+    buildspec       = "buildspec.yml"
+    git_submodules_config {
+      fetch_submodules = false
+    }
   }
 
   tags = {
