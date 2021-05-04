@@ -1,3 +1,8 @@
+resource "aws_codestarconnections_connection" "aws_nuke" {
+  name          = "sandbox-nuke"
+  provider_type = "GitHub"
+}
+
 resource "aws_codebuild_project" "aws_nuke" {
   name          = "sandbox-nuke"
   description   = "Nuke Sandbox Weekly"
