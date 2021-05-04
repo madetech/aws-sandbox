@@ -1,45 +1,62 @@
 ---
+feature-flags:
+  disable-deletion-protection:
+    RDSInstance: true
+    EC2Instance: true
+    CloudformationStack: true
+
 regions:
-- "global"
-- "eu-west-1"
-- "eu-west-2"
-- "us-east-1"
+  - "global"
+  - "eu-west-1"
+  - "eu-west-2"
+  - "us-east-1"
 
 account-blocklist:
-- 1234567890
+  - 1234567890
+
+resource-types:
+  excludes:
+    - EC2KeyPair
+    - IAMUser
+    - IAMSAMLProvider
+    - OpsWorksUserProfile
+    - S3Object
 
 accounts:
-  261219435789:
-    resource-types:
-      excludes:
-        - CloudFormationStack
-          - hackney-mosaic-dev
-          - awseb-e-fpdbchrgp4-stack
-          - sdd-filtering-demo-dev
-          - CJSEMQToSQS
-          - meal-planner-api-dev
-          - ddb-scheduler-dev
-          - "amplify*"
-        - CloudWatchEventsRule
-          - codebuild-nuke-cron
-        - CloudWatchEventsTarget
-          - codebuild-nuke-cron
-        - CodeBuildProject
-          - sandbox-nuke
-        - CodeStarConnection
-          - sandbox-nuke
-        - DynamoDBTable
-          - sandbox-terraform-locks 
-        - DynamoDBTableItem
-          - sandbox-terraform-locks
-        - EC2KeyPair
-        - IAMSAMLProvider
-        - IAMRolePolicyAttachment
-          - "AWSServiceRole*"
-          - "AWSReservedSSO_SandboxAdmin*"
-          - codebuild-aws-nuke
-        - OpsWorksUserProfile
-        - S3Object
-        - S3Bucket
-          - madetech-sandbox-terraform-state
-          - aws-nuke-config-madetech
+  "261219435789":
+    filters:
+      CloudFormationStack:
+        - "hackney-mosaic-dev"
+        - "awseb-e-fpdbchrgp4-stack"
+        - "sdd-filtering-demo-dev"
+        - "CJSEMQToSQS"
+        - "meal-planner-api-dev"
+        - "ddb-scheduler-dev"
+        - "amplify*"
+      CloudWatchEventsRule:
+        - "Rule: codebuild-nuke-cron"
+      CloudWatchEventsTarget:
+        - "Rule: codebuild-nuke-cron"
+      CloudWatchLogsLogGroup:
+        - "/aws/codebuild/sandbox-nuke"
+      CodeBuildProject:
+        - "sandbox-nuke"
+      CodeStarConnection:
+        - "sandbox-nuke"
+      DynamoDBTable:
+        - "sandbox-terraform-locks"
+      DynamoDBTableItem:
+        - "sandbox-terraform-locks -> madetech-sandbox-terraform-state/sandbox.tfstate-md5"
+        - "sandbox-terraform-locks -> madetech-sandbox-terraform-state/bootstrap.tfstate-md5"
+      IAMRole:
+        - "AWSReservedSSO*"
+        - "codebuild-aws-nuke"
+      IAMRolePolicy:
+        - "cloudwatch_events_assume -> cloudwatch_events_start_codebuild"
+      IAMRolePolicyAttachment:
+        - "AWSServiceRole*"
+        - "AWSReservedSSO_SandboxAdmin*"
+        - "codebuild-aws-nuke -> AdministratorAccess"
+      S3Bucket:
+        - "s3://madetech-sandbox-terraform-state"
+        - "s3://aws-nuke-config-madetech"
