@@ -1,6 +1,7 @@
 resource "aws_codestarconnections_connection" "aws_nuke" {
   name          = "sandbox-nuke"
   provider_type = "GitHub"
+  tags          = local.common_tags
 }
 
 resource "aws_codebuild_project" "aws_nuke" {
@@ -31,14 +32,13 @@ resource "aws_codebuild_project" "aws_nuke" {
     }
   }
 
-  tags = {
-    Environment = "Sandbox"
-  }
+  tags = local.common_tags
 }
 
 resource "aws_iam_role" "codebuild" {
   name               = "codebuild-aws-nuke"
   assume_role_policy = data.aws_iam_policy_document.codebuild.json
+  tags               = local.common_tags
 }
 
 data "aws_iam_policy_document" "codebuild" {

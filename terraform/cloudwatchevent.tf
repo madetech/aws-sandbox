@@ -1,21 +1,18 @@
-resource "aws_iam_role" "cloudwatch" {
-  name = "cloudwatch_events_assume"
+data "aws_iam_policy_document" "cloudwatch" {
+  statement {
+    actions = ["sts:AssumeRole"]
 
-  assume_role_policy = <<DOC
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "events.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
     }
-  ]
+  }
 }
-DOC
+
+resource "aws_iam_role" "cloudwatch" {
+  name               = "cloudwatch_events_assume"
+  assume_role_policy = data.aws_iam_policy_document.cloudwatch.json
+  tags               = local.common_tags
 }
 
 resource "aws_iam_role_policy" "cloudwatch_events_start_codebuild" {
@@ -45,6 +42,7 @@ resource "aws_cloudwatch_event_rule" "codebuild" {
   name                = "codebuild-nuke-cron"
   description         = "Cron to nuke sandbox resources"
   schedule_expression = "rate(1 hour)"
+  tags                = local.common_tags
 }
 
 resource "aws_cloudwatch_event_target" "trigger_build" {
