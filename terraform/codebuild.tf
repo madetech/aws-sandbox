@@ -1,11 +1,11 @@
 resource "aws_codestarconnections_connection" "aws_nuke" {
-  name          = "sandbox-nuke"
+  name          = local.name
   provider_type = "GitHub"
   tags          = local.common_tags
 }
 
 resource "aws_codebuild_project" "aws_nuke" {
-  name           = "sandbox-nuke"
+  name           = local.name
   description    = "Nuke Sandbox Weekly"
   build_timeout  = "5"
   service_role   = aws_iam_role.codebuild.arn
@@ -36,7 +36,7 @@ resource "aws_codebuild_project" "aws_nuke" {
 }
 
 resource "aws_iam_role" "codebuild" {
-  name               = "codebuild-aws-nuke"
+  name               = "codebuild-${local.name}"
   assume_role_policy = data.aws_iam_policy_document.codebuild.json
   tags               = local.common_tags
 }

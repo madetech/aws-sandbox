@@ -10,13 +10,13 @@ data "aws_iam_policy_document" "cloudwatch" {
 }
 
 resource "aws_iam_role" "cloudwatch" {
-  name               = "cloudwatch_events_assume"
+  name               = "cloudwatch-${local.name}"
   assume_role_policy = data.aws_iam_policy_document.cloudwatch.json
   tags               = local.common_tags
 }
 
-resource "aws_iam_role_policy" "cloudwatch_events_start_codebuild" {
-  name = "cloudwatch_events_start_codebuild"
+resource "aws_iam_role_policy" "cloudwatch" {
+  name = "cloudwatch-${local.name}"
   role = aws_iam_role.cloudwatch.id
 
   policy = <<DOC
@@ -39,9 +39,9 @@ DOC
 }
 
 resource "aws_cloudwatch_event_rule" "codebuild" {
-  name                = "codebuild-nuke-cron"
+  name                = local.name
   description         = "Cron to nuke sandbox resources"
-  schedule_expression = "rate(1 hour)"
+  schedule_expression = local.schedule
   tags                = local.common_tags
 }
 
