@@ -48,13 +48,13 @@ accounts:
         - "sandbox-terraform-locks -> madetech-sandbox-terraform-state/bootstrap.tfstate-md5"
       IAMRole:
         - "AWSReservedSSO_SandboxAdmin_772511f048f85463"
-        - "codebuild-aws-nuke"
+        - "codebuild-sandbox-nuke"
+        - "cloudwatch-sandbox-nuke"
       IAMRolePolicy:
-        - "cloudwatch_events_assume -> cloudwatch_events_start_codebuild"
+        - "cloudwatch-sandbox-nuke -> cloudwatch-sandbox-nuke"
       IAMRolePolicyAttachment:
         - "AWSServiceRole*"
         - "AWSReservedSSO_SandboxAdmin_772511f048f85463 -> AdministratorAccess"
-        - "codebuild-aws-nuke -> AdministratorAccess"
+        - "codebuild-sandbox-nuke -> AdministratorAccess"
       S3Bucket:
         - "s3://madetech-sandbox-terraform-state"
-        - "s3://aws-nuke-config-madetech"
