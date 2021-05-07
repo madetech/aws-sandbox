@@ -4,4 +4,4 @@ version: 0.2
 phases:
   build:
     commands:
-      - aws-nuke --config aws-nuke.yaml --quiet --force
+      - aws-nuke --config aws-nuke.yaml --quiet --force --no-dry-run

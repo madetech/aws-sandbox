@@ -1,6 +1,7 @@
 locals {
   name     = "sandbox-nuke"
-  schedule = "rate(1 hour)"
+  schedule = "cron(0 20 ? * FRI *)"
+
   common_tags = {
     Environment = "Sandbox"
     Project     = "aws-nuke"
