@@ -16,6 +16,9 @@ account-blocklist:
 
 resource-types:
   excludes:
+    - AWSBackupPlan
+    - AWSBackupSelection
+    - AWSBackupVault
     - EC2KeyPair
     - IAMSAMLProvider
     - OpsWorksUserProfile
