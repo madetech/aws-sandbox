@@ -32,9 +32,9 @@ accounts:
         - "meal-planner-api-dev"
         - "ddb-scheduler-dev"
       CloudWatchEventsRule:
-        - "Rule: codebuild-nuke-cron"
+        - "Rule: sandbox-nuke"
       CloudWatchEventsTarget:
-        - "Rule: codebuild-nuke-cron"
+        - "Rule: sandbox-nuke Target ID: trigger_build"
       CloudWatchLogsLogGroup:
         - "/aws/codebuild/sandbox-nuke"
       CodeBuildProject:
