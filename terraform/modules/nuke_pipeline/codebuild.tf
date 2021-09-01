@@ -26,7 +26,9 @@ resource "aws_codebuild_project" "aws_nuke" {
     git_clone_depth = 1
     type            = "GITHUB"
     location        = "https://github.com/madetech/aws-sandbox.git"
-    buildspec       = "buildspec.yml"
+    buildspec = templatefile("${path.module}/templates/buildspec.yaml.tpl", {
+      filename : var.nuke_config_filename
+    })
     git_submodules_config {
       fetch_submodules = false
     }

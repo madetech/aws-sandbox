@@ -1,6 +1,5 @@
 locals {
-  name     = "sandbox-nuke"
-  schedule = "cron(0 20 ? * FRI *)"
+  name = "sandbox-nuke"
 
   common_tags = {
     Environment = "Sandbox"

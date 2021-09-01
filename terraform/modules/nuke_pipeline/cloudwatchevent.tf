@@ -41,7 +41,7 @@ DOC
 resource "aws_cloudwatch_event_rule" "codebuild" {
   name                = local.name
   description         = "Cron to nuke sandbox resources"
-  schedule_expression = local.schedule
+  schedule_expression = var.cron_schedule
   tags                = local.common_tags
 }
 

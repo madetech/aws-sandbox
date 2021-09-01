@@ -4,7 +4,7 @@ resource "aws_kms_key" "this" {
 }
 
 resource "aws_s3_bucket" "this" {
-  bucket ="madetech-devops-sandbox-terraform-state"
+  bucket = "madetech-devops-sandbox-terraform-state"
   acl    = "private"
 
   versioning {

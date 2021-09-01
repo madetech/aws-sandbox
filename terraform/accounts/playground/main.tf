@@ -19,4 +19,7 @@ terraform {
 
 module "nuke" {
   source = "../../modules/nuke_pipeline"
+
+  nuke_config_filename = "aws-nuke.yaml"
+  cron_schedule        = "cron(0 20 ? * FRI *)"
 }
