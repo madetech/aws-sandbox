@@ -61,3 +61,36 @@ accounts:
         - "codebuild-sandbox-nuke -> AdministratorAccess"
       S3Bucket:
         - "s3://madetech-sandbox-terraform-state"
+  "612473995106": # devops pairing
+    filters:
+      CloudWatchEventsRule:
+        - "Rule: sandbox-nuke"
+      CloudWatchEventsTarget:
+        - "Rule: sandbox-nuke Target ID: trigger_build"
+      CloudWatchLogsLogGroup:
+        - "/aws/codebuild/sandbox-nuke"
+      CodeBuildProject:
+        - "sandbox-nuke"
+      CodeStarConnection:
+        - "sandbox-nuke"
+      DynamoDBTable:
+        - "sandbox-terraform-locks"
+      DynamoDBTableItem:
+        - "sandbox-terraform-locks -> madetech-devops-sandbox-terraform-state/sandbox.tfstate-md5"
+        - "sandbox-terraform-locks -> madetech-devops-sandbox-terraform-state/bootstrap.tfstate-md5"
+      IAMRole:
+        - "AWSReservedSSO_SandboxAdmin_86f1556e3bd2fa65"
+        - "OrganizationAccountAccessRole"
+        - "codebuild-sandbox-nuke"
+        - "cloudwatch-sandbox-nuke"
+      IAMRolePolicy:
+        - "cloudwatch-sandbox-nuke -> cloudwatch-sandbox-nuke"
+        - "OrganizationAccountAccessRole -> AdministratorAccess"
+      IAMRolePolicyAttachment:
+        - "AWSServiceRole*"
+        - "AWSReservedSSO_SandboxAdmin_86f1556e3bd2fa65 -> AdministratorAccess"
+        - "codebuild-sandbox-nuke -> AdministratorAccess"
+      S3Bucket:
+        - "s3://madetech-devops-sandbox-terraform-state"
+      KMSKey:
+        - "109240f9-30d7-426b-9cea-b008d4430092"

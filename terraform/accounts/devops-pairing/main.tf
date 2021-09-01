@@ -19,4 +19,6 @@ terraform {
 
 module "nuke" {
   source = "../../modules/nuke_pipeline"
+
+  cron_schedule        = "cron(0 20 * * ? *)"
 }
