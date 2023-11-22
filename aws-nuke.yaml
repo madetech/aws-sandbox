@@ -74,6 +74,8 @@ presets:
         - "AWSServiceRoleForAWSControlTower"
       EventsRule:
         - "aws-controltower-*"
+      CloudTrailTrail:
+        - "aws-controltower-*"
 accounts:
   "261219435789":
     presets:
