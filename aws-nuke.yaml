@@ -114,7 +114,7 @@ presets:
           value: "aws-controltower-*"
       ConfigServiceConfigurationRecorder:
         - type: glob
-          value: "Owner:*aws-controltower-*"
+          value: "aws-controltower-*"
 accounts:
   "261219435789":
     presets:
