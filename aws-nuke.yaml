@@ -23,19 +23,13 @@ resource-types:
     - IAMSAMLProvider
     - OpsWorksUserProfile
     - S3Object
-
-accounts:
-  "261219435789":
+    
+presets:
+  nuke:
     filters:
-      CacheSubnetGroups:
-        - "default"
-      CloudFormationStack:
-        - "hackney-mosaic-dev"
-        - "awseb-e-fpdbchrgp4-stack"
-        - "sdd-filtering-demo-dev"
-        - "CJSEMQToSQS"
-        - "meal-planner-api-dev"
-        - "ddb-scheduler-dev"
+      IAMRole:
+        - "codebuild-sandbox-nuke"
+        - "cloudwatch-sandbox-nuke"
       CloudWatchEventsRule:
         - "Rule: sandbox-nuke"
       CloudWatchEventsTarget:
@@ -51,19 +45,57 @@ accounts:
       DynamoDBTableItem:
         - "sandbox-terraform-locks -> madetech-sandbox-terraform-state/sandbox.tfstate-md5"
         - "sandbox-terraform-locks -> madetech-sandbox-terraform-state/bootstrap.tfstate-md5"
-      IAMRole:
-        - "AWSReservedSSO_SandboxAdmin_772511f048f85463"
-        - "codebuild-sandbox-nuke"
-        - "cloudwatch-sandbox-nuke"
       IAMRolePolicy:
         - "cloudwatch-sandbox-nuke -> cloudwatch-sandbox-nuke"
+      S3Bucket:
+        - "s3://madetech-sandbox-terraform-state"
+      LambdaFunction:
+        - "aws-controltower-*"
+      LogsLogGroup:
+        - "aws-controltower-*"
+      SNSTopic:
+        - "aws-controltower-*"
+      LambdaPermission:
+        - "StackSet-AWSControlTower*"
+      SNSTopicPolicy:
+        - "aws-controltower-*"
+      SNSSubscription:
+        - "aws-controltower-*" 
+  controltower:
+    filters:
+      CloudFormationStack:
+        - "StackSet-AWSControlTowerExecutionRole*"
+        - "StackSet-AWSControlTower*"
+      IAMRole:
+        - "AWSReservedSSO_SandboxAdmin*"
+        - "AWSControlTowerExecution"
+        - "aws-controltower-*"
+      "IAMServiceLinkedRole":
+        - "AWSServiceRoleForAWSControlTower"
+      EventsRule:
+        - "aws-controltower-*"
+accounts:
+  "261219435789":
+    presets:
+        - "controltower"
+        - "nuke"
+    filters:
+      CacheSubnetGroups:
+        - "default"
+      CloudFormationStack:
+        - "hackney-mosaic-dev"
+        - "awseb-e-fpdbchrgp4-stack"
+        - "sdd-filtering-demo-dev"
+        - "CJSEMQToSQS"
+        - "meal-planner-api-dev"
+        - "ddb-scheduler-dev"
       IAMRolePolicyAttachment:
         - "AWSServiceRole*"
         - "AWSReservedSSO_SandboxAdmin_772511f048f85463 -> AdministratorAccess"
-        - "codebuild-sandbox-nuke -> AdministratorAccess"
-      S3Bucket:
-        - "s3://madetech-sandbox-terraform-state"
+        - "codebuild-sandbox-nuke -> AdministratorAccess"      
   "612473995106": # devops pairing
+    presets:
+        - "controltower"
     filters:
       CacheSubnetGroups:
         - "default"
