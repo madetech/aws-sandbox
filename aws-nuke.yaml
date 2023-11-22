@@ -97,7 +97,7 @@ presets:
           value: "aws-controltower-*"
       CloudWatchEventsRule:
         - type: glob
-          value: "Rule: aws-controltower-*
+          value: "Rule: aws-controltower-*"
       CloudWatchLogsLogGroup:
         - type: glob
           value: "/aws/lambda/aws-controltower*"
