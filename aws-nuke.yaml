@@ -49,18 +49,7 @@ presets:
         - "cloudwatch-sandbox-nuke -> cloudwatch-sandbox-nuke"
       S3Bucket:
         - "s3://madetech-sandbox-terraform-state"
-      LambdaFunction:
-        - "aws-controltower-*"
-      LogsLogGroup:
-        - "aws-controltower-*"
-      SNSTopic:
-        - "aws-controltower-*"
-      LambdaPermission:
-        - "StackSet-AWSControlTower*"
-      SNSTopicPolicy:
-        - "aws-controltower-*"
-      SNSSubscription:
-        - "aws-controltower-*" 
+     
   controltower:
     filters:
       CloudFormationStack:
@@ -73,9 +62,29 @@ presets:
       "IAMServiceLinkedRole":
         - "AWSServiceRoleForAWSControlTower"
       EventsRule:
-        - "aws-controltower-*"
+        - type: glob
+          value: "aws-controltower-*"
       CloudTrailTrail:
-        - "aws-controltower-*"
+        - type: glob
+          value: "aws-controltower-*"
+      LambdaFunction:
+        - type: glob
+          value: "aws-controltower-*"
+      LogsLogGroup:
+        - type: glob
+          value: "aws-controltower-*"
+      SNSTopic:
+        - type: glob
+          value: "aws-controltower-*"
+      LambdaPermission:
+        - type: glob
+          value: "StackSet-AWSControlTower*"
+      SNSTopicPolicy:
+        - type: glob
+          value: "aws-controltower-*"
+      SNSSubscription:
+        - type: glob
+          value: "aws-controltower-*" 
 accounts:
   "261219435789":
     presets:
@@ -92,7 +101,8 @@ accounts:
         - "meal-planner-api-dev"
         - "ddb-scheduler-dev"
       IAMRolePolicyAttachment:
-        - "AWSServiceRole*"
+        - type: glob
+          value: "AWSServiceRole*"
         - "AWSReservedSSO_SandboxAdmin_772511f048f85463 -> AdministratorAccess"
         - "codebuild-sandbox-nuke -> AdministratorAccess"      
   "612473995106": # devops pairing
@@ -125,7 +135,8 @@ accounts:
         - "cloudwatch-sandbox-nuke -> cloudwatch-sandbox-nuke"
         - "OrganizationAccountAccessRole -> AdministratorAccess"
       IAMRolePolicyAttachment:
-        - "AWSServiceRole*"
+        - type: glob
+          value: "AWSServiceRole*"
         - "AWSReservedSSO_SandboxAdmin_86f1556e3bd2fa65 -> AdministratorAccess"
         - "codebuild-sandbox-nuke -> AdministratorAccess"
       S3Bucket:
