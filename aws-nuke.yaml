@@ -63,6 +63,12 @@ presets:
         - "AWSControlTowerExecution"
         - type: glob
           value: "aws-controltower-*"
+      IAMRolePolicy:
+        - type: glob
+          value: "aws-controltower-*"
+      IAMRolePolicyAttachment:
+        - type: glob
+          value: "aws-controltower-*"
       "IAMServiceLinkedRole":
         - "AWSServiceRoleForAWSControlTower"
       EventsRule:
@@ -79,7 +85,7 @@ presets:
           value: "aws-controltower-*"
       SNSTopic:
         - type: glob
-          value: "aws-controltower-*"
+          value: "TopicARN*aws-controltower-*"
       LambdaPermission:
         - type: glob
           value: "StackSet-AWSControlTower*"
@@ -89,6 +95,15 @@ presets:
       SNSSubscription:
         - type: glob
           value: "aws-controltower-*" 
+      CloudWatchEventsRule:
+        - type: glob
+          value: "Rule*aws-controltower-*
+      CloudWatchLogsLogGroup:
+        - type: glob
+          value: "/aws/lambda/aws-controltower*"
+      CloudWatchEventsTarget:
+        - type: glob
+          value: "Rule*aws-controltower-*"
 accounts:
   "261219435789":
     presets:
