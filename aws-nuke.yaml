@@ -53,12 +53,16 @@ presets:
   controltower:
     filters:
       CloudFormationStack:
-        - "StackSet-AWSControlTowerExecutionRole*"
-        - "StackSet-AWSControlTower*"
+        - type: glob
+          value "StackSet-AWSControlTowerExecutionRole*"
+        - type: glob
+          value: "StackSet-AWSControlTower*"
       IAMRole:
-        - "AWSReservedSSO_SandboxAdmin*"
+        - type: glob
+          value: "AWSReservedSSO_SandboxAdmin*"
         - "AWSControlTowerExecution"
-        - "aws-controltower-*"
+        - type: glob
+          value: "aws-controltower-*"
       "IAMServiceLinkedRole":
         - "AWSServiceRoleForAWSControlTower"
       EventsRule:
