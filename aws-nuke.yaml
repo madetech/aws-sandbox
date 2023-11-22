@@ -54,7 +54,7 @@ presets:
     filters:
       CloudFormationStack:
         - type: glob
-          value "StackSet-AWSControlTowerExecutionRole*"
+          value: "StackSet-AWSControlTowerExecutionRole*"
         - type: glob
           value: "StackSet-AWSControlTower*"
       IAMRole:
