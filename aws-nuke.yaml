@@ -130,6 +130,8 @@ accounts:
         - "CJSEMQToSQS"
         - "meal-planner-api-dev"
         - "ddb-scheduler-dev"
+      EC2Instance:
+        - "i-0789d3d84bf69c27b"
       IAMRolePolicyAttachment:
         - type: glob
           value: "AWSServiceRole*"
