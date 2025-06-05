@@ -136,7 +136,10 @@ accounts:
         - type: glob
           value: "AWSServiceRole*"
         - "AWSReservedSSO_SandboxAdmin_772511f048f85463 -> AdministratorAccess"
-        - "codebuild-sandbox-nuke -> AdministratorAccess"      
+        - "codebuild-sandbox-nuke -> AdministratorAccess"
+      IAMOpenIDConnectProvider:
+        - property: "tag:ProtectFromNuke"
+          value: "true" 
   "612473995106": # devops pairing
     presets:
         - "controltower"
