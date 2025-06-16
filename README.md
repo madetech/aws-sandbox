@@ -6,7 +6,7 @@ This repo contains the config to periodically clean the AWS Sandbox account of a
 resources using `aws-nuke`. It also contains the Terraform to deploy the AWS resources
 required to run this job remotely.
 
-It is possible to exlude resources you wish to retain by adding them to the `aws-nuke.yaml` config file.
+It is possible to exclude resources you wish to retain by adding them to the `aws-nuke.yaml` config file.
 
 ## Repo Structure
 - aws-nuke.yaml config file is used by [aws-nuke](https://github.com/rebuy-de/aws-nuke#readme)
@@ -18,8 +18,8 @@ It is possible to exlude resources you wish to retain by adding them to the `aws
 
 Test locally after updating aws-nuke.yaml
 
-```
-aws-vault exec madesso -- aws-nuke -c aws-nuke.yaml -q --force
+```shell
+aws-vault exec madesso -- aws-nuke run -c aws-nuke.yaml -q --force
 ```
 
 By default `aws-nuke` runs in dry-run mode. To really delete things add the `--no-dry-run` flag.
