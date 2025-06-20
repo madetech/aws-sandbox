@@ -132,14 +132,20 @@ accounts:
         - "ddb-scheduler-dev"
       EC2Instance:
         - "i-0789d3d84bf69c27b"
+      ECRRepository:
+        - "msp-highlow-*" # msp-support-engineer-interview
+      IAMOpenIDConnectProvider:
+        - property: "tag:ProtectFromNuke"
+          value: "true"
       IAMRolePolicyAttachment:
         - type: glob
           value: "AWSServiceRole*"
         - "AWSReservedSSO_SandboxAdmin_772511f048f85463 -> AdministratorAccess"
         - "codebuild-sandbox-nuke -> AdministratorAccess"
-      IAMOpenIDConnectProvider:
-        - property: "tag:ProtectFromNuke"
-          value: "true" 
+      KMSKey:
+        - "b2f7a236-7058-4604-88f5-90e9182471c8" # msp-support-engineer-interview
+      S3Bucket:
+        - "msp-support-engineer-interview-terraform-state" # msp-support-engineer-interview
   "612473995106": # devops pairing
     presets:
         - "controltower"
