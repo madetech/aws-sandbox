@@ -49,6 +49,20 @@ presets:
         - "cloudwatch-sandbox-nuke -> cloudwatch-sandbox-nuke"
       S3Bucket:
         - "s3://madetech-sandbox-terraform-state"
+  msp-support-interview-non-ephemeral-resources:
+    filters:
+      ECRRepository:
+        - property: "tag:MSPSupportEngineerInterviewStack"
+          value: "shared"
+      IAMRole:
+        - property: "tag:MSPSupportEngineerInterviewStack"
+          value: "shared"
+      KMSKey:
+        - property: "tag:MSPSupportEngineerInterviewStack"
+          value: "bootstrap"
+      S3Bucket:
+        - property: "tag:MSPSupportEngineerInterviewStack"
+          value: "bootstrap"
      
   controltower:
     filters:
@@ -120,6 +134,7 @@ accounts:
     presets:
         - "controltower"
         - "nuke"
+        - "msp-support-interview-non-ephemeral-resources"
     filters:
       CacheSubnetGroups:
         - "default"
@@ -132,8 +147,6 @@ accounts:
         - "ddb-scheduler-dev"
       EC2Instance:
         - "i-0789d3d84bf69c27b"
-      ECRRepository:
-        - "msp-highlow-*" # msp-support-engineer-interview
       IAMOpenIDConnectProvider:
         - property: "tag:ProtectFromNuke"
           value: "true"
@@ -142,10 +155,6 @@ accounts:
           value: "AWSServiceRole*"
         - "AWSReservedSSO_SandboxAdmin_772511f048f85463 -> AdministratorAccess"
         - "codebuild-sandbox-nuke -> AdministratorAccess"
-      KMSKey:
-        - "b2f7a236-7058-4604-88f5-90e9182471c8" # msp-support-engineer-interview
-      S3Bucket:
-        - "msp-support-engineer-interview-terraform-state" # msp-support-engineer-interview
   "612473995106": # devops pairing
     presets:
         - "controltower"
