@@ -17,7 +17,7 @@ resource "aws_codebuild_project" "aws_nuke" {
 
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
-    image                       = "quay.io/rebuy/aws-nuke:latest"
+    image                       = "ghcr.io/ekristen/aws-nuke:v3.56.2"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
   }
