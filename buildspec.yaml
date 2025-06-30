@@ -6,4 +6,4 @@ phases:
     commands:
       # Todo: revert this after testing
       # - aws-nuke --config aws-nuke.yaml --quiet --force --no-dry-run
-      - aws-nuke run --config aws-nuke.yaml --quiet --force
+      - aws-nuke run --config aws-nuke.yaml --log-level debug --force
