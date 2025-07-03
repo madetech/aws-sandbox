@@ -1,9 +1,11 @@
 terraform {
+  # Todo: Bring this up to date once other things are working
   required_version = ">= 1.0.0"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
+      # Todo: Bring this up to date once other things are working
       version = "~> 3.0"
     }
   }

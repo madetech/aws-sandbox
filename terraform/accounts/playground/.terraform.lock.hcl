@@ -1,12 +1,12 @@
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
-
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "3.56.0"
   constraints = "~> 3.0"
   hashes = [
     "h1:L0F0l8AuDcLL+Grob4eHWdc3jm/dCufnU5lWWEpi+F8=",
+    "h1:i7QpN5YsUdrd6GNY4RkRu6+a7F16nBsd3tDVxNp1iAQ=",
     "zh:001373be6fbc5738bf8c3aa8688b248ba5f99b04174310c0efcbbf23e6c4dc29",
     "zh:0d4af59266668089790f5a7bdeb25642ba750fb5dc7934fe28d1cc36310ba495",
     "zh:1413ff4d445678c096d46e8957e27320df94561354955d7bc5d8054b6df7b299",
