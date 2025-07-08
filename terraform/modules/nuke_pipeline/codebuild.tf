@@ -9,9 +9,7 @@ resource "aws_codebuild_project" "aws_nuke" {
   description    = "Nuke Sandbox Weekly"
   build_timeout  = "60"
   service_role   = aws_iam_role.codebuild.arn
-  # Todo: revert this after testing
-  # source_version = "main"
-  source_version = "use-ekristen-fork-of-aws-nuke"
+  source_version = "main"
 
   artifacts {
     type = "NO_ARTIFACTS"
