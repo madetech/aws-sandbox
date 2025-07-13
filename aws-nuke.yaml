@@ -38,6 +38,9 @@ presets:
         - "/aws/codebuild/sandbox-nuke"
       CodeBuildProject:
         - "sandbox-nuke"
+      CodeBuildBuild:
+        - type: contains
+          value: "sandbox-nuke"
       CodeStarConnection:
         - "sandbox-nuke"
       DynamoDBTable:
