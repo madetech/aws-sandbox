@@ -19,7 +19,7 @@ It is possible to exclude resources you wish to retain by adding them to the `aw
 Test locally after updating `aws-nuke.yaml`...
 
 ```shell
-aws-vault exec madesso -- aws-nuke run -c aws-nuke.yaml -q --force
+aws-vault exec mt-playground -- aws-nuke run -c aws-nuke.yaml -q --force
 ```
 
 By default `aws-nuke` runs in dry-run mode. To really delete things, add the `--no-dry-run` flag.
