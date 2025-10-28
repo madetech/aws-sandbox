@@ -23,6 +23,9 @@ resource-types:
     - IAMSAMLProvider
     - OpsWorksUserProfile
     - S3Object
+    - AWS::Timestream::Database
+    - AWS::Timestream::ScheduledQuery
+    - AWS::Timestream::Table
     
 presets:
   nuke:
