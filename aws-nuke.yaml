@@ -26,6 +26,7 @@ resource-types:
     - AWS::Timestream::Database
     - AWS::Timestream::ScheduledQuery
     - AWS::Timestream::Table
+    - GuardDutyDetector
     
 presets:
   nuke:
