@@ -16,17 +16,17 @@ account-blocklist:
 
 resource-types:
   excludes:
+    - AWS::Timestream::Database
+    - AWS::Timestream::ScheduledQuery
+    - AWS::Timestream::Table
     - AWSBackupPlan
     - AWSBackupSelection
     - AWSBackupVault
     - EC2KeyPair
+    - GuardDutyDetector
     - IAMSAMLProvider
     - OpsWorksUserProfile
     - S3Object
-    - AWS::Timestream::Database
-    - AWS::Timestream::ScheduledQuery
-    - AWS::Timestream::Table
-    - GuardDutyDetector
     
 presets:
   nuke:
