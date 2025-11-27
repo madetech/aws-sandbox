@@ -31,20 +31,17 @@ resource-types:
 presets:
   nuke:
     filters:
-      IAMRole:
-        - "codebuild-sandbox-nuke"
-        - "cloudwatch-sandbox-nuke"
       CloudWatchEventsRule:
         - "Rule: sandbox-nuke"
       CloudWatchEventsTarget:
         - "Rule: sandbox-nuke Target ID: trigger_build"
       CloudWatchLogsLogGroup:
         - "/aws/codebuild/sandbox-nuke"
-      CodeBuildProject:
-        - "sandbox-nuke"
       CodeBuildBuild:
         - type: contains
           value: "sandbox-nuke"
+      CodeBuildProject:
+        - "sandbox-nuke"
       CodeStarConnection:
         - "sandbox-nuke"
       DynamoDBTable:
@@ -52,6 +49,9 @@ presets:
       DynamoDBTableItem:
         - "sandbox-terraform-locks -> madetech-sandbox-terraform-state/sandbox.tfstate-md5"
         - "sandbox-terraform-locks -> madetech-sandbox-terraform-state/bootstrap.tfstate-md5"
+      IAMRole:
+        - "cloudwatch-sandbox-nuke"
+        - "codebuild-sandbox-nuke"
       IAMRolePolicy:
         - "cloudwatch-sandbox-nuke -> cloudwatch-sandbox-nuke"
       S3Bucket:
