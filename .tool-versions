@@ -1,3 +1,4 @@
 aws-nuke 3.56.2
 # Todo: Bring this up to date once other things are working
 terraform 1.0.5
+uv 0.9.13

@@ -37,6 +37,7 @@ presets:
         - "Rule: sandbox-nuke Target ID: trigger_build"
       CloudWatchLogsLogGroup:
         - "/aws/codebuild/sandbox-nuke"
+        - "/aws/lambda/notify-slack-sandbox-nuke"
       CodeBuildBuild:
         - type: contains
           value: "sandbox-nuke"
@@ -44,6 +45,9 @@ presets:
         - "sandbox-nuke"
       CodeStarConnection:
         - "sandbox-nuke"
+      CodeStarNotificationRule:
+        - property: "Name"
+          value: "sandbox-nuke"
       DynamoDBTable:
         - "sandbox-terraform-locks"
       DynamoDBTableItem:
@@ -52,10 +56,26 @@ presets:
       IAMRole:
         - "cloudwatch-sandbox-nuke"
         - "codebuild-sandbox-nuke"
+        - "notify-slack-sandbox-nuke"
+        - "sns-logging-sandbox-nuke"
       IAMRolePolicy:
         - "cloudwatch-sandbox-nuke -> cloudwatch-sandbox-nuke"
+        - "notify-slack-sandbox-nuke -> notify-slack-sandbox-nuke"
+        - "notify-slack-sandbox-nuke -> notify-slack-sandbox-nuke-logs"
+        - "sns-logging-sandbox-nuke -> sns-logging-sandbox-nuke"
+      LambdaFunction:
+        - "notify-slack-sandbox-nuke"
       S3Bucket:
         - "s3://madetech-sandbox-terraform-state"
+      SNSSubscription:
+        - type: glob
+          value: "Owner:*:completions-sandbox-nuke:*"
+      SNSTopic:
+        - type: glob
+          value: "TopicARN:*:completions-sandbox-nuke"
+      SSMParameter:
+        - "/sandbox-nuke/slack-webhook"
+
   msp-support-interview-non-ephemeral-resources:
     filters:
       ECRRepository:
