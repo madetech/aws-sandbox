@@ -31,3 +31,4 @@ override.tf.json
 
 aws-nuke.zip
 *.log
+aws-nuke

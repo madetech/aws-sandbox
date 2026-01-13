@@ -9,7 +9,7 @@ required to run this job remotely.
 It is possible to exclude resources you wish to retain by adding them to the `aws-nuke.yaml` config file.
 
 ## Repository Structure
-- `aws-nuke.yaml` config file is used by [aws-nuke](https://github.com/rebuy-de/aws-nuke#readme)
+- `aws-nuke.yaml` config file is used by [aws-nuke](https://github.com/ekristen/aws-nuke#readme)
 - `buildspec.yml` is used by AWS CodeBuild
 - Terraform IAC code is within the `terraform` directory
 - Terraform IAC initial setup code for state file bucket/dynamodb is within the `terraform/bootstrap` directory
