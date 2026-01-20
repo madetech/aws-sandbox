@@ -7,8 +7,11 @@ feature-flags:
 
 regions:
   - "global"
+  - "eu-central-1"
+  - "eu-north-1"
   - "eu-west-1"
   - "eu-west-2"
+  - "eu-west-3"
   - "us-east-1"
 
 account-blocklist:
@@ -70,6 +73,11 @@ presets:
       S3Bucket:
         - property: "tag:MSPSupportEngineerInterviewStack"
           value: "bootstrap"
+  cloud-interview-non-ephemeral-resources:
+    filters:
+      S3Bucket:
+        - "s3://madetechinterviewbucket"
+
      
   controltower:
     filters:
@@ -142,6 +150,7 @@ accounts:
         - "controltower"
         - "nuke"
         - "msp-support-interview-non-ephemeral-resources"
+        - "cloud-interview-non-ephemeral-resources"
     filters:
       CacheSubnetGroups:
         - "default"
