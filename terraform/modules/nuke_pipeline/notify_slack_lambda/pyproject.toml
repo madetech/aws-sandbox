@@ -1,0 +1,22 @@
+[project]
+name = "notify-slack-lambda"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "requests>=2.32.5",
+]
+
+[dependency-groups]
+# Packages that preinstalled when running in AWS Lambda, but need to be installed when working locally:
+lambda-builtin = [
+    "boto3>=1.40.66",
+]
+
+# Packages for running the tests and working on the code:
+dev = [
+    "pytest>=8.4.2",
+    "pytest-mock>=3.15.1",
+    "ruff>=0.14.3",
+]
