@@ -70,9 +70,13 @@ presets:
       KMSKey:
         - property: "tag:MSPSupportEngineerInterviewStack"
           value: "bootstrap"
+        - property: "tag:MSPSupportEngineerInterviewStack"
+          value: "shared"
       S3Bucket:
         - property: "tag:MSPSupportEngineerInterviewStack"
           value: "bootstrap"
+        - property: "tag:MSPSupportEngineerInterviewStack"
+          value: "shared"
   cloud-interview-non-ephemeral-resources:
     filters:
       S3Bucket:
